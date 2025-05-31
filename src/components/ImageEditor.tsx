@@ -4,6 +4,7 @@ import { Toolbar } from './Toolbar';
 import { Canvas } from './Canvas';
 import { UploadArea } from './UploadArea';
 import { FilterPanel } from './FilterPanel';
+import { CropTool } from './CropTool';
 import { useImageHistory } from '@/hooks/useImageHistory';
 import { useImageFilters } from '@/hooks/useImageFilters';
 
@@ -33,6 +34,7 @@ export const ImageEditor = () => {
   const [image, setImage] = useState<ImageState | null>(null);
   const [selectedTool, setSelectedTool] = useState<string>('select');
   const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
+  const [isCropMode, setIsCropMode] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { history, addToHistory, undo, redo, canUndo, canRedo } = useImageHistory(image);
   const { applyFilters } = useImageFilters();
@@ -103,52 +105,25 @@ export const ImageEditor = () => {
 
   const handleCrop = (aspectRatio: string) => {
     if (!image) return;
-    
-    let cropWidth, cropHeight;
-    const imgAspect = image.width / image.height;
-    
-    switch (aspectRatio) {
-      case '1:1':
-        if (imgAspect > 1) {
-          cropWidth = image.height;
-          cropHeight = image.height;
-        } else {
-          cropWidth = image.width;
-          cropHeight = image.width;
-        }
-        break;
-      case '16:9':
-        const target169 = 16 / 9;
-        if (imgAspect > target169) {
-          cropHeight = image.height;
-          cropWidth = cropHeight * target169;
-        } else {
-          cropWidth = image.width;
-          cropHeight = cropWidth / target169;
-        }
-        break;
-      case '4:3':
-        const target43 = 4 / 3;
-        if (imgAspect > target43) {
-          cropHeight = image.height;
-          cropWidth = cropHeight * target43;
-        } else {
-          cropWidth = image.width;
-          cropHeight = cropWidth / target43;
-        }
-        break;
-      default:
-        return;
-    }
+    setIsCropMode(true);
+  };
+
+  const handleCropComplete = (croppedArea: any) => {
+    if (!image) return;
     
     updateImage({
       crop: {
-        x: (image.width - cropWidth) / 2,
-        y: (image.height - cropHeight) / 2,
-        width: cropWidth,
-        height: cropHeight,
+        x: croppedArea.x,
+        y: croppedArea.y,
+        width: croppedArea.width,
+        height: croppedArea.height,
       },
     });
+    setIsCropMode(false);
+  };
+
+  const handleCropCancel = () => {
+    setIsCropMode(false);
   };
 
   const handleFilterChange = (filterName: string, value: number) => {
@@ -207,6 +182,14 @@ export const ImageEditor = () => {
           />
         )}
       </div>
+
+      {isCropMode && (
+        <CropTool
+          image={image.src}
+          onCropComplete={handleCropComplete}
+          onCancel={handleCropCancel}
+        />
+      )}
     </div>
   );
 };

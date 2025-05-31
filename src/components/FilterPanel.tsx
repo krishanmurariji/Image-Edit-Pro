@@ -2,7 +2,9 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
+import { Separator } from '@/components/ui/separator';
 import { X } from 'lucide-react';
+import { FilterPresets } from './FilterPresets';
 
 interface FilterPanelProps {
   filters: {
@@ -29,6 +31,19 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
     { name: 'sepia', label: 'Sepia', min: 0, max: 100, step: 1 },
   ];
 
+  const handlePresetApply = (presetFilters: typeof filters) => {
+    Object.entries(presetFilters).forEach(([filterName, value]) => {
+      onFilterChange(filterName, value);
+    });
+  };
+
+  const handleReset = () => {
+    Object.keys(filters).forEach(filterName => {
+      const defaultValue = ['brightness', 'contrast', 'saturation'].includes(filterName) ? 100 : 0;
+      onFilterChange(filterName, defaultValue);
+    });
+  };
+
   return (
     <div className="w-80 bg-white border-l border-gray-200 p-6 overflow-y-auto">
       <div className="flex items-center justify-between mb-6">
@@ -38,7 +53,14 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
         </Button>
       </div>
 
+      {/* Filter Presets */}
+      <FilterPresets onPresetApply={handlePresetApply} onReset={handleReset} />
+
+      <Separator className="my-6" />
+
+      {/* Manual Adjustments */}
       <div className="space-y-6">
+        <h3 className="text-sm font-medium text-gray-700">Manual Adjustments</h3>
         {filterConfig.map(({ name, label, min, max, step }) => (
           <div key={name} className="space-y-2">
             <div className="flex justify-between items-center">
@@ -46,9 +68,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 {label}
               </label>
               <span className="text-sm text-gray-500">
-                {name === 'brightness' || name === 'contrast' || name === 'saturation'
-                  ? `${filters[name as keyof typeof filters]}%`
-                  : `${filters[name as keyof typeof filters]}%`}
+                {filters[name as keyof typeof filters]}%
               </span>
             </div>
             <Slider
@@ -61,21 +81,6 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
             />
           </div>
         ))}
-      </div>
-
-      <div className="mt-8 pt-6 border-t border-gray-200">
-        <Button
-          variant="outline"
-          className="w-full"
-          onClick={() => {
-            Object.keys(filters).forEach(filterName => {
-              const defaultValue = ['brightness', 'contrast', 'saturation'].includes(filterName) ? 100 : 0;
-              onFilterChange(filterName, defaultValue);
-            });
-          }}
-        >
-          Reset All Filters
-        </Button>
       </div>
     </div>
   );
