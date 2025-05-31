@@ -157,7 +157,7 @@ export const Canvas = forwardRef<HTMLCanvasElement, CanvasProps>(
           ref={ref}
           className="max-w-full max-h-full border border-gray-300 bg-white shadow-lg cursor-grab active:cursor-grabbing"
           style={{
-            imageRendering: 'high-quality',
+            imageRendering: 'pixelated',
           }}
         />
         

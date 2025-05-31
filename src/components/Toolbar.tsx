@@ -9,7 +9,7 @@ import {
   RotateCw,
   FlipHorizontal,
   FlipVertical,
-  Brightness,
+  Settings,
   Undo,
   Redo,
   Image,
@@ -153,7 +153,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
           className="w-full"
           onClick={onFilterToggle}
         >
-          <Brightness className="w-4 h-4 mr-2" />
+          <Settings className="w-4 h-4 mr-2" />
           Filters & Adjustments
         </Button>
       </div>
