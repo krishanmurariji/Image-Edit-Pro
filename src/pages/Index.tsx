@@ -1,10 +1,15 @@
-
 import { ImageEditor } from "@/components/ImageEditor";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="h-screen bg-gray-50">
-      <ImageEditor />
+    <div className="min-h-screen flex flex-col bg-background">
+      <Navigation />
+      <main className="flex-1">
+        <ImageEditor />
+      </main>
+      <Footer />
     </div>
   );
 };
