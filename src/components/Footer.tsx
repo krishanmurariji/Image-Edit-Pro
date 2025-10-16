@@ -1,4 +1,4 @@
-import { Github, Youtube, Instagram, Twitter, Linkedin, Moon, RotateCw } from "lucide-react";
+import { Github, Youtube, Instagram, Twitter, Linkedin } from "lucide-react";
 
 const socials = [
   { icon: Github, href: "https://github.com/krishanmurariji", label: "GitHub", color: "#333" },
@@ -33,7 +33,20 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Center Section - Social Media Icons */}
+          {/* Center Section - Interactive Tagline */}
+          <div className="flex flex-col items-center gap-2 animate-fade-in">
+            <p className="text-lg font-semibold text-foreground">Transform Your Images</p>
+            <p className="text-sm text-muted-foreground text-center max-w-xs">
+              Professional editing tools at your fingertips
+            </p>
+            <div className="flex gap-2 mt-2">
+              <div className="h-1 w-8 rounded-full bg-primary animate-pulse"></div>
+              <div className="h-1 w-8 rounded-full bg-primary/60"></div>
+              <div className="h-1 w-8 rounded-full bg-primary/30"></div>
+            </div>
+          </div>
+
+          {/* Right Section - Social Media Icons */}
           <div className="flex gap-4">
             {socials.map((social) => (
               <div key={social.label} className="relative group">
@@ -41,7 +54,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative overflow-hidden flex justify-center items-center w-12 h-12 rounded-full bg-background border-2 border-border hover:shadow-lg transition-all duration-300"
+                  className="relative overflow-hidden flex justify-center items-center w-12 h-12 rounded-full bg-background border-2 border-border hover:shadow-lg transition-all duration-300 hover-scale"
                   aria-label={social.label}
                 >
                   <div
@@ -55,25 +68,6 @@ const Footer = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Right Section - Keyboard Shortcuts */}
-          <div className="hidden md:flex flex-col gap-3">
-            <div className="flex items-center gap-3 bg-muted px-4 py-2 rounded-lg border">
-              <Moon className="w-4 h-4 text-muted-foreground" />
-              <kbd className="font-mono font-semibold text-sm px-2 py-1 rounded border bg-background">
-                T
-              </kbd>
-              <span className="text-sm text-muted-foreground">Toggle</span>
-            </div>
-
-            <div className="flex items-center gap-3 bg-muted px-4 py-2 rounded-lg border">
-              <RotateCw className="w-4 h-4 text-muted-foreground" />
-              <kbd className="font-mono font-semibold text-sm px-2 py-1 rounded border bg-background">
-                R
-              </kbd>
-              <span className="text-sm text-muted-foreground">Refresh</span>
-            </div>
           </div>
         </div>
       </div>
