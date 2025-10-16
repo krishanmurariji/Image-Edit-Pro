@@ -1,7 +1,16 @@
-import { Upload } from "lucide-react";
+import { Upload, Moon, Sun } from "lucide-react";
 import { Button } from "./ui/button";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const Navigation = () => {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <nav className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 md:px-8">
@@ -17,17 +26,23 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Right Section */}
+          {/* Right Section - Theme Toggle */}
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm">
-              Features
-            </Button>
-            <Button variant="ghost" size="sm">
-              About
-            </Button>
-            <Button variant="default" size="sm">
-              Get Started
-            </Button>
+            {mounted && (
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="hover-scale"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            )}
           </div>
         </div>
       </div>
