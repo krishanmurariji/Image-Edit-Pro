@@ -114,3 +114,80 @@ We recommend installing Node.js via [nvm (Node Version Manager)](https://github.
 
 ## 📁 Project Structure
 
+---
+
+## 🌐 Deployment
+
+This project is deployed on **Vercel** for optimal performance and reliability.
+
+To deploy your own version:
+
+1. Fork this repository
+2. Connect your repository to [Vercel](https://vercel.com)
+3. Deploy with one click
+
+**Live URL**: [https://pictureperfecteditor.vercel.app/](https://pictureperfecteditor.vercel.app/)
+
+---
+
+## 🔮 Future Enhancements
+
+- [ ] AI-powered background removal
+- [ ] Advanced retouching tools
+- [ ] Batch image processing
+- [ ] Custom filter creation
+- [ ] Save editing history
+- [ ] Preset templates for social media
+- [ ] Layer support
+- [ ] Drawing and annotation tools
+- [ ] Cloud storage integration
+- [ ] Collaborative editing
+
+---
+
+## 👨‍💻 Developer
+
+**Krishan Murari**  
+Web Developer & Designer
+
+I am a Web Developer and Poet. I love to explore new tech and the tech world. Coding is my interest, my hobby.
+
+### About Me:
+
+- 👨‍🎓 I'm a **Web Developer & Designer**
+- 🔭 I'm currently working on [JavaScript and React](https://github.com/krishanmurariji) projects
+- ✍ I'm a **Teacher & Student** [Visit me](https://krishanmurari.live/)
+- 🌱 I'm learning Data Structures and Algorithms on [LeetCode](https://leetcode.com/Krishanmurariji/)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/krishanmurariji" target="_blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="Krishan_murari" height="30" width="40" /></a>
+&nbsp;
+<a href="https://www.linkedin.com/in/krishan-murari/" target="_blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="Krishan_murari" height="30" width="40" /></a>
+&nbsp;
+<a href="https://leetcode.com/Krishanmurariji/" target="_blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="Krishan_murari" height="30" width="40" /></a>
+&nbsp;
+<a href="https://krishanmurari.live/" target="_blank"><img align="center" src="https://img.shields.io/badge/Website-krishanmurari.live-blue" alt="Website" height="30" /></a>
+
+---
+
+## 📝 License
+
+This project is open source and available under the **MIT License**.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to check the [issues page](https://github.com/krishanmurariji/picture-perfect-editor/issues).
+
+---
+
+## ⭐ Show Your Support
+
+Give a ⭐️ if you like this project and found it useful!
+
+---
+
+<p align="center">Made with ❤️ by Krishan Murari</p>
+
